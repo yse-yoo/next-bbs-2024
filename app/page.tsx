@@ -8,7 +8,7 @@ export default function ThreadsPage() {
   const [threads, setThreads] = useState<Thread[]>([])
 
   useEffect(() => {
-    fetch('/api/thread/get')
+    fetch('/api/thread/latest')
       .then(response => response.json())
       .then(data => setThreads(data))
   }, [])
