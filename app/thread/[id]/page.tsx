@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import { TailSpin } from 'react-loader-spinner'
 
 export default function ThreadPage({ params }: { params: { id: string } }) {
   const { id } = params
@@ -43,7 +44,20 @@ export default function ThreadPage({ params }: { params: { id: string } }) {
   }
 
   if (!thread) {
-    return <p>Loading...</p>
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <TailSpin
+          height="80"
+          width="80"
+          color="#4fa94d"
+          ariaLabel="tail-spin-loading"
+          radius="1"
+          wrapperStyle={{}}
+          wrapperClass=""
+          visible={true}
+        />
+      </div>
+    );
   }
 
   const convertNewlinesToBreaks = (text: string) => {
@@ -76,19 +90,18 @@ export default function ThreadPage({ params }: { params: { id: string } }) {
         </form>
       </div>
       <div className="mt-6">
-        {thread.posts.map(post => (
+        {thread.posts.map((post, index) => (
           <div key={post.id} className="border-b border-gray-300 mb-4 pb-2">
-            <p className="text-gray-800">{convertNewlinesToBreaks(post.content)}</p>
-            <p className="text-gray-500 text-sm">{new Date(post.createdAt).toLocaleString()}</p>
+            <p className="text-gray-500">
+              <span className="pe-3">{index + 1}.</span>
+              <span className="text-sm">{new Date(post.createdAt).toLocaleString()}</span>
+            </p>
+            <p className="text-gray-800">
+              {convertNewlinesToBreaks(post.content)}
+            </p>
           </div>
         ))}
 
-
-        <div className="mt-4">
-          <Link href="/" className="text-blue-500 hover:underline">
-            スレッド一覧
-          </Link>
-        </div>
       </div>
     </div>
   )

@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 
 export default function NewThreadPage() {
   const router = useRouter()
@@ -46,6 +47,9 @@ export default function NewThreadPage() {
         <button className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600" type="submit">
           作成
         </button>
+        <Link href="/thread/" className="inline-block bg-white py-2 px-4 rounded hover:bg-gray-100">
+          もどる
+        </Link>
       </form>
     </div>
   )
