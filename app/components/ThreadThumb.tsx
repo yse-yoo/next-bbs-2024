@@ -10,12 +10,10 @@ function ThreadThumb(props: ThreadThumbProps) {
 
     return (
         <div key={thread.id} className="border-b border-gray-300 mb-4 pb-2">
-            <div>
-                <span className="text-gray-500 text-sm me-3">{new Date(thread.createdAt).toLocaleString()}</span>
-                <Link href={`/thread/${thread.id}`} className="text-blue-500 hover:underline">
-                    {thread.title}
-                </Link>
-            </div>
+            <span className="text-gray-500 text-sm me-3">{new Date(thread.createdAt).toLocaleString()}</span>
+            <Link href={`/thread/${thread.id}`} className="text-blue-500 hover:underline">
+                {thread.title}
+            </Link>
         </div>
     )
 }
