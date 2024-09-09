@@ -13,6 +13,8 @@ model Thread {
   content   String
   createdAt DateTime @default(now())
   posts     Post[]
+
+  @@map("threads")
 }
 
 model Post {
@@ -21,4 +23,6 @@ model Post {
   createdAt DateTime @default(now())
   threadId  Int
   thread    Thread   @relation(fields: [threadId], references: [id])
+
+  @@map("posts")
 }
