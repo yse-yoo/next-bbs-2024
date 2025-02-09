@@ -1,7 +1,7 @@
 ## Getting Started
 ### インストール
 ```bash
-npm i
+npm install
 ```
 
 ### DBマイグレート
